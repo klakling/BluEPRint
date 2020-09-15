@@ -1,12 +1,13 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netstandard2.1</TargetFramework>
+	  <LangVersion>latest</LangVersion>
+	  <TargetFramework>netstandard2.1</TargetFramework>
   </PropertyGroup>
 
 
 	<ItemGroup>
-		<PackageReference Include="ChemSharp" Version="0.0.1"/>
+		<PackageReference Include="ChemSharp" Version="0.0.1" />
 		<PackageReference Include="OxyPlot.Core" Version="2.0.0" />
 	</ItemGroup>
 </Project>
