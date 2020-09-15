@@ -9,7 +9,7 @@ namespace BluEPRint.Core
         /// <summary>
         /// Parent Axis to Link to.
         /// </summary>
-        private Axis _parent;
+        private readonly Axis _parent;
 
         /// <summary>
         /// Function that does conversion
