@@ -1,6 +1,5 @@
 ﻿using OxyPlot.Axes;
 using System;
-using System.Diagnostics;
 
 namespace BluEPRint.Core
 {

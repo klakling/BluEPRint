@@ -1,5 +1,4 @@
 ﻿using BluEPRint.Core;
-using BluEPRint.Core.Spectrum;
 using ChemSharp.Spectrum;
 using OxyPlot;
 using OxyPlot.Axes;
@@ -19,7 +18,7 @@ namespace BluEPRint
             InitializeComponent();
             var path =
                 @"C:\Users\jenso\PowerFolders\Forschung\EPR\PyOMeIPCoCl\5_55k\Spectrum6";
-            var spec = SpectrumFactory.Create<PlottableEPRSpectrum>(path + ".par", path + ".spc");
+            var spec = SpectrumFactory.Create<EPRSpectrum>(path + ".par", path + ".spc");
             var model = new PlotModel();
             var x = new LinearAxis()
             {
@@ -27,7 +26,8 @@ namespace BluEPRint
                 AbsoluteMaximum = spec.Data.Max(s => s.X),
                 AbsoluteMinimum = spec.Data.Min(s => s.X)
             };
-            var g = new LinkedAxis(x, spec.BtoG, spec.GtoB)
+            var g = new LinkedAxis(x, FuncMapping.Map(spec.PrimaryToSecondary),
+                FuncMapping.Map(spec.SecondaryToPrimary))
             {
                 Position = AxisPosition.Top
             };

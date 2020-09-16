@@ -3,9 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.30503.244
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluEPRint", "BluEPRint\BluEPRint.csproj", "{7873F27C-01B2-4790-A5D1-3B51D024258F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BluEPRint.Wpf", "BluEPRint\BluEPRint.Wpf.csproj", "{7873F27C-01B2-4790-A5D1-3B51D024258F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BluEPRint.Core", "BluEPRint.Core\BluEPRint.Core.csproj", "{DA45240A-5022-4144-87F2-F62BA98005DD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BluEPRint.Core", "BluEPRint.Core\BluEPRint.Core.csproj", "{DA45240A-5022-4144-87F2-F62BA98005DD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
