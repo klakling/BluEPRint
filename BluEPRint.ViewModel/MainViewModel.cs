@@ -1,11 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using BluEPRint.Core;
-using OxyPlot;
+﻿using BluEPRint.Core;
 using ChemSharp.Spectrum;
+using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace BluEPRint.ViewModel
 {
