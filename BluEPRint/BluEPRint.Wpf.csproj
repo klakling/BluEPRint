@@ -4,6 +4,12 @@
     <OutputType>WinExe</OutputType>
     <TargetFramework>netcoreapp3.1</TargetFramework>
     <UseWPF>true</UseWPF>
+    <Authors>Jens Krumsieck</Authors>
+    <PackageId>BluEPRint.Wpf</PackageId>
+    <Product>BluEPRint</Product>
+    <RepositoryType>git</RepositoryType>
+    <RepositoryUrl>https://github.com/JensKrumsieck/BluEPRint</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/JensKrumsieck/BluEPRint</PackageProjectUrl>
   </PropertyGroup>
 
 	<ItemGroup>
