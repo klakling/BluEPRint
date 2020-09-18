@@ -1,4 +1,5 @@
-﻿using BluEPRint.Core;
+﻿using System;
+using BluEPRint.Core;
 using ChemSharp.Spectrum;
 using OxyPlot;
 using OxyPlot.Axes;
@@ -18,20 +19,30 @@ namespace BluEPRint.ViewModel
         /// </summary>
         public DefaultPlotModel Model
         {
-            get => Get<DefaultPlotModel>(); 
+            get => Get<DefaultPlotModel>();
             set => Set(value);
         }
 
         /// <summary>
         /// Current Window/Tab 's Spectrum
         /// </summary>
-        public AbstractSpectrum Spectrum
+        public T Spectrum
         {
-            get => Get<AbstractSpectrum>();
+            get => Get<T>();
             set => Set(value);
         }
 
-        public MainViewModel(IEnumerable<string> paths)
+        /// <summary>
+        /// ctor
+        /// </summary>
+        /// <param name="paths"></param>
+        public MainViewModel(IEnumerable<string> paths) => Initialize(paths);
+
+        /// <summary>
+        /// Initializes Object, not necessary when constructor is used
+        /// </summary>
+        /// <param name="paths"></param>
+        public void Initialize(IEnumerable<string> paths)
         {
             Spectrum = SpectrumFactory.Create<T>(paths);
             Model = new DefaultPlotModel();
