@@ -16,5 +16,6 @@
 
     <Style x:Key="MenuItemStyle" TargetType="{x:Type MenuItem}" BasedOn="{StaticResource MaterialDesignMenuItem}" >
         <Setter Property="FontSize" Value="12"/>
+        <Setter Property="Height" Value="30" />
     </Style>
 </ResourceDictionary>
