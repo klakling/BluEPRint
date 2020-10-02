@@ -1,7 +1,7 @@
 ﻿using OxyPlot;
 using OxyPlot.Axes;
 
-namespace BluEPRint.Core
+namespace BluEPRint.Core.Plotting
 {
     public class DefaultPlotModel : PlotModel
     {

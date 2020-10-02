@@ -1,7 +1,7 @@
 ﻿using OxyPlot.Axes;
 using System;
 
-namespace BluEPRint.Core
+namespace BluEPRint.Core.Plotting
 {
     public class LinkedAxis : LinearAxis
     {

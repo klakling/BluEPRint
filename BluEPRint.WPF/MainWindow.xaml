@@ -10,22 +10,36 @@
         Title="MainWindow" Height="800" Width="1000" Drop="OnFileDrop" AllowDrop="True">
         <DockPanel>
             <Menu DockPanel.Dock="Top">
-                <MenuItem Header="File"></MenuItem>
+            <MenuItem Header="File" Style="{StaticResource MenuItemStyle}">
+                <MenuItem Header="Open" Style="{StaticResource MenuItemStyle}"/>
+                <MenuItem Header="Save / Export" Style="{StaticResource MenuItemStyle}"/>
+                <Separator/>
+
+                <MenuItem Header="Preferences" Style="{StaticResource MenuItemStyle}"/>
+            </MenuItem>
             </Menu>
-            <ToolBarTray DockPanel.Dock="Left" Orientation="Vertical">
-                <ToolBar>
-                    <Button Height="50" Width="50">
+        <ToolBarTray DockPanel.Dock="Top" Style="{DynamicResource MaterialDesignToolBarTray}">
+            <ToolBar Style="{DynamicResource MaterialDesignToolBar}">
+                <Button Style="{StaticResource ToolbarButton}">
                         <StackPanel>
                             <materialDesign:PackIcon Kind="Folder"/>
-                            <TextBlock HorizontalAlignment="Center" FontSize="9" Text="Open"/>
+                            <TextBlock Text="Open"/>
                         </StackPanel>
                     </Button>
-                    <Button  Height="50" Width="50">
-                        <StackPanel>
+                <Button  Style="{StaticResource ToolbarButton}">
+                    <StackPanel>
                             <materialDesign:PackIcon Kind="ContentSave"/>
-                            <TextBlock HorizontalAlignment="Center" FontSize="9" Text="Save"/>
+                            <TextBlock Text="Save"/>
                         </StackPanel>
                     </Button>
+
+                <Separator/>
+                <Button Style="{StaticResource ToolbarButton}">
+                    <StackPanel>
+                        <materialDesign:PackIcon Kind="BoxCutter"/>
+                        <TextBlock Text="Peak Picking" />
+                    </StackPanel>
+                </Button>
                 </ToolBar>
             </ToolBarTray>
                 <Grid>

@@ -1,11 +1,11 @@
-﻿using System;
-using BluEPRint.Core;
+﻿using BluEPRint.Core;
 using ChemSharp.Spectrum;
 using OxyPlot;
 using OxyPlot.Axes;
 using OxyPlot.Series;
 using System.Collections.Generic;
 using System.Linq;
+using BluEPRint.Core.Plotting;
 
 namespace BluEPRint.ViewModel
 {
@@ -39,10 +39,10 @@ namespace BluEPRint.ViewModel
         public MainViewModel(IEnumerable<string> paths) => Initialize(paths);
 
         /// <summary>
-        /// Initializes Object, not necessary when constructor is used
+        /// Initializes Object
         /// </summary>
         /// <param name="paths"></param>
-        public void Initialize(IEnumerable<string> paths)
+        private void Initialize(IEnumerable<string> paths)
         {
             Spectrum = SpectrumFactory.Create<T>(paths);
             Model = new DefaultPlotModel();

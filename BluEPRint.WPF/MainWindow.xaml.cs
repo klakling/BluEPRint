@@ -1,11 +1,13 @@
-﻿using BluEPRint.Core;
+﻿using System.Collections.Generic;
+using BluEPRint.Core.Spectrum;
 using BluEPRint.ViewModel;
-using ChemSharp.Spectrum;
-using OxyPlot.Wpf;
-using System.IO;
+using System.Diagnostics;
 using System.Linq;
 using System.Windows;
 using System.Windows.Controls;
+using System.Windows.Documents;
+using MaterialDesignThemes.Wpf;
+using OxyPlot.Wpf;
 
 namespace BluEPRint.WPF
 {
@@ -14,46 +16,33 @@ namespace BluEPRint.WPF
     /// </summary>
     public partial class MainWindow : Window
     {
+        public List<TabItem> TabItems = new List<TabItem>();
         public MainWindow()
         {
             InitializeComponent();
+            TabContentView.ItemsSource = TabItems;
         }
 
         private void OnFileDrop(object sender, DragEventArgs e)
         {
             if (!e.Data.GetDataPresent(DataFormats.FileDrop)) return;
             var files = (string[])e.Data.GetData(DataFormats.FileDrop, false);
+            if (files == null && !files.Any()) return;
             foreach (var fileName in files)
             {
-                if (!SupportedFiles.Files(fileName).Any()) return;
-                AddTabPage(CreateViewModel(fileName));
+                var checkedFiles = SupportedFiles.Files(fileName);
+                if (!checkedFiles.Any()) return;
+                var methodInfo = typeof(MainViewModelBuilder).GetMethods();
+                var createMethod = methodInfo.FirstOrDefault(s => s.Name == SupportedFiles.SpectrumType(fileName) + "ViewModel");
+                var result = createMethod?.Invoke(null, new object[] { SupportedFiles.Files(fileName) });
+                AddTabPage(result);
             }
         }
 
         private void AddTabPage(dynamic viewModel)
         {
-            var item = new TabItem()
-            {
-                Header = viewModel.Spectrum.Files[0].Path,
-                DataContext = viewModel
-            };
-            item.Content = new PlotView() {Model = viewModel.Model};
-            TabContentView.Items.Add(item);
-        }
-
-        private static dynamic CreateViewModel(string path)
-        {
-            var ext = Path.GetExtension(path);
-            if(string.IsNullOrEmpty(ext)) ext = Path.GetFileName(path);
-            return ext switch
-            {
-                ".par" => new MainViewModel<EPRSpectrum>(SupportedFiles.Files(path)),
-                ".spc" => new MainViewModel<EPRSpectrum>(SupportedFiles.Files(path)),
-                "fid" => new MainViewModel<NMRSpectrum>(SupportedFiles.Files(path)),
-                "acqus" => new MainViewModel<NMRSpectrum>(SupportedFiles.Files(path)),
-                ".DSW" => new MainViewModel<UVVisSpectrum>(SupportedFiles.Files(path)),
-                _ => null
-            };
+            var page = new TabItem {DataContext = viewModel, Content = new PlotView() {Model = viewModel.Model}};
+            TabItems.Add(page);
         }
     }
 }
